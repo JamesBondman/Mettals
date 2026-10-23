@@ -17,7 +17,7 @@ def append(rates, path, now):
     """Writes a row when the rate changed, or at least once an hour."""
     last = last_rows(path)
     new = [(int(now), m, b, s) for m, (b, s) in rates.items()
-           if m not in last or last[m][:2] != (b, s) or now - last[m][2] >= 3600]
+           if m not in last or last[m][:2] != (b, s) or now - last[m][2] >= 1500]
     if new:
         path.parent.mkdir(exist_ok=True)
         fresh = not path.exists()
